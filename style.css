@@ -1,0 +1,9 @@
+.main {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: aquamarine;
+}
+#quote-box {  
+    width: 500px;
+}
