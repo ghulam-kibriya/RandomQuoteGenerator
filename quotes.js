@@ -1,5 +1,4 @@
-export default
-[
+const quotes =  [
     {
         "quote": "Life isn’t about getting and having, it’s about giving and being.",
         "author": "Kevin Kruse"
