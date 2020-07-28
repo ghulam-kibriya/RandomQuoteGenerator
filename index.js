@@ -412,11 +412,16 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      index: Math.floor(Math.random()*quotes.length)
+      index: Math.floor(Math.random()*quotes.length),
+      allQuotes:[]
     }
-    this.handleChange.bind(this)
   }
-  handleChange() {
+  componentDidMount() {
+      fetch("https://type.fit/api/quotes")
+        .then(response => response.json())
+        .then(data => this.setState({allQuotes:data}))
+  }
+  handleChange = () => {
     this.setState({index:Math.floor(Math.random()*quotes.length)})
   }
   render() {
