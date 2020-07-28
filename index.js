@@ -30,7 +30,14 @@ class App extends React.Component {
         })   
     }
   render() {
-    const generateTweet = () => this.state.quote.replace(" ","%20")
+    const generateTweet = () => {
+      const date = new Date()
+      console.log(date.getDay())
+      const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+      const text = `\n#${days[date.getDay()]}Inspiration`
+      const twitterHref = `https://twitter.com/intent/tweet?text=${escape(this.state.quote)}${escape(text)}`
+      return twitterHref
+    }
     return (
       <div>
         <Quote 
@@ -38,7 +45,7 @@ class App extends React.Component {
           author = {this.state.author}
           />
         <button id="new-quote" onClick={() => this.handleChange()}>Click Me</button><br/>
-        <a id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${generateTweet()}`}>Tweet</a>  
+        <a id="tweet-quote" href={generateTweet()}>Tweet</a>  
       </div>
     )
   }
